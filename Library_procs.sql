@@ -1,0 +1,33 @@
+USE Library_CheckOut;
+GO
+
+CREATE PROC dbo.Get_Number_of_Copies_of_Book_at_All_Branches @BookCopies
+NVARCHAR(50)
+AS
+SELECT *
+FROM LIBRARY_BRANCH
+LEFT JOIN BOOK_COPIES ON LIBRARY_BRANCH.BranchID = BOOK_COPIES.BranchID
+LEFT JOIN BOOKS ON BOOK_COPIES.BookID = BOOKS.BookID
+WHERE BOOKS.Title = 'The Lost Tribe';
+
+
+
+SELECT Name
+FROM BOOK_LOANS
+RIGHT JOIN BORROWER ON BOOK_LOANS.CardNo = BORROWER.CardNo
+WHERE BOOK_LOANS.CardNo IS NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
